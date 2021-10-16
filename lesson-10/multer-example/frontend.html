@@ -11,6 +11,7 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.22.0/axios.js'></script>
     <script>
         const productsContainer = document.getElementById("products");
+
         const productsRequest = axios.get("http://localhost:3000/api/products");
         productsRequest
             .then(({data})=> {
@@ -19,7 +20,7 @@
                     <img src="http://localhost:3000/${item.image}" /></div>`).join();
                 productsContainer.insertAdjacentHTML("beforeend", productElements)
             })
-            .catch(error => console.log(error.message))
+            .catch(error => console.log(error.message));
     </script>
 </body>
 </html>

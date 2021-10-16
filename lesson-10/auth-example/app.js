@@ -3,6 +3,7 @@ const logger = require('morgan')
 const cors = require('cors')
 
 const authRouter = require("./routes/api/auth");
+const usersRouter = require("./routes/api/users");
 const ordersRouter = require("./routes/api/orders");
 const productsRouter = require("./routes/api/products");
 
@@ -13,8 +14,10 @@ const formatsLogger = app.get('env') === 'development' ? 'dev' : 'short'
 app.use(logger(formatsLogger))
 app.use(cors())
 app.use(express.json())
+app.use(express.static("public"));
 
 app.use("/api/auth", authRouter);
+app.use("/api/users", usersRouter);
 app.use("/api/orders", ordersRouter);
 app.use("/api/products", productsRouter);
 
